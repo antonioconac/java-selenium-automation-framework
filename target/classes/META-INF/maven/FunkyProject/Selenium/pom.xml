@@ -96,7 +96,7 @@
   	</profile>
   	
   	<profile>
-  	    <id>Error Validation</id>
+  	    <id>ErrorValidation</id>
   		<build>
 		  	<pluginManagement>
 		  		<plugins>

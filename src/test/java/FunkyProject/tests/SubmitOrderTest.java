@@ -27,7 +27,7 @@ public class SubmitOrderTest extends BaseTest{
 	String productName = "ZARA COAT 3";
 	
 	@Test(dataProvider = "getData", groups= {"Purchase"})
-	public void submitOrder(HashMap<String, String> input) throws IOException {
+	public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
 		ProductPage productPage = landingPage.loginApplication(input.get("email"), input.get("password"));
 		List<WebElement> products = productPage.getProductList();
 		productPage.addProductToCart(input.get("product"));
@@ -37,6 +37,7 @@ public class SubmitOrderTest extends BaseTest{
 		Assert.assertTrue(match);
 		CheckoutPage checkoutPage = cartPage.goToCheckout();
 		checkoutPage.selectCountry("india");
+		Thread.sleep(1000);
 		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
 		
 		String confirmMessage = confirmationPage.getConfirmationMessage();
